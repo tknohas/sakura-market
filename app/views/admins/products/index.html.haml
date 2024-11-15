@@ -17,5 +17,5 @@
                   .me-2
                     %h5.card-title= link_to product.name, '#' # TODO: 詳細画面作成時にリンクを追加
                     %p.card-text
-                      価格: ¥#{product.price}
+                      価格: #{number_to_currency(product.price)}
                   = link_to '編集', edit_admins_product_path(product.id), class: 'btn btn-outline-primary btn-sm'
