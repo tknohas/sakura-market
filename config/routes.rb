@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
-  namespace :admin do
+  namespace :admins do
     root 'home#index'
+
+    resources :products, only: %i[new create]
   end
 end
