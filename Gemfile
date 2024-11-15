@@ -17,9 +17,9 @@ gem 'stimulus-rails'
 gem 'thruster', require: false
 gem 'turbo-rails'
 
-gem 'image_processing'
 gem 'devise'
 gem 'haml-rails'
+gem 'image_processing'
 gem 'simple_form'
 
 group :development, :test do

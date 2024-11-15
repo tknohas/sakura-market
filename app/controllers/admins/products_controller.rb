@@ -15,6 +15,6 @@ class Admins::ProductsController < Admins::ApplicationController
   private
 
   def product_params
-    params.expect(product: [:name, :price, :image, :description, :position, :published_at])
+    params.expect(product: %i[name price image description position published_at])
   end
 end
