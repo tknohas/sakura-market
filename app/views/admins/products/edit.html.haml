@@ -1,2 +1,4 @@
 %h2.text-center.mb-4 商品編集
+.container.text-end
+  = button_to '削除', admins_product_path, method: :delete, data: { turbo_confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger"
 = render 'admins/products/form', product: @product, text: '変更する'

@@ -1,5 +1,5 @@
 class Admins::ProductsController < Admins::ApplicationController
-  before_action :set_product, only: %i[edit update]
+  before_action :set_product, only: %i[edit update destroy]
 
   def new
     @product = Product.new
@@ -23,6 +23,11 @@ class Admins::ProductsController < Admins::ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @product.destroy!
+    redirect_to admins_root_path, notice: '削除しました'
   end
 
   private
