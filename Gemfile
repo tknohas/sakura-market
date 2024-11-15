@@ -19,9 +19,9 @@ gem 'turbo-rails'
 
 # TODO: Product作為の際に使用
 # gem "image_processing", "~> 1.2"
+gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
-gem 'devise'
 
 group :development, :test do
   gem 'brakeman', require: false
