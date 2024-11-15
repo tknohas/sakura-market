@@ -19,6 +19,7 @@ gem 'turbo-rails'
 
 # TODO: Product作為の際に使用
 # gem "image_processing", "~> 1.2"
+gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 
@@ -34,7 +35,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'selenium'
 end
