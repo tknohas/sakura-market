@@ -1,6 +1,6 @@
 class Admins::ProductsController < Admins::ApplicationController
-
   before_action :set_product, only: [:edit, :update]
+
   def new
     @product = Product.new
   end
