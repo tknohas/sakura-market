@@ -21,6 +21,7 @@ gem 'turbo-rails'
 # gem "image_processing", "~> 1.2"
 gem 'haml-rails'
 gem 'simple_form'
+gem 'devise'
 
 group :development, :test do
   gem 'brakeman', require: false
@@ -34,7 +35,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'selenium'
 end
