@@ -17,10 +17,9 @@ gem 'stimulus-rails'
 gem 'thruster', require: false
 gem 'turbo-rails'
 
-# TODO: Product作為の際に使用
-# gem "image_processing", "~> 1.2"
 gem 'devise'
 gem 'haml-rails'
+gem 'image_processing'
 gem 'simple_form'
 
 group :development, :test do
