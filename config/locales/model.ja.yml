@@ -19,3 +19,10 @@ ja:
               blank: "を入力してください"
             position:
               not_a_number: "には数字を入力してください"
+  number:
+    currency:
+      format:
+        unit: "円"  # 通貨単位を「円」に設定
+        format: "%n%u"  # 数字の後に単位を付ける形式
+        delimiter: ","  # 千の位の区切り文字をカンマに設定
+        precision: 0  # 小数点以下の桁数を0に設定
