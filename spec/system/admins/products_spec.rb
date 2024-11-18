@@ -195,5 +195,16 @@ RSpec.describe 'Products', type: :system do
       expect(page).to have_content '公開しました'
       expect(Product.last.published_at).to be_present
     end
+
+    it '非公開にできる', :js do
+      create(:product, name: 'バナナ', published_at: Time.current)
+
+      click_on 'バナナ'
+      click_on '非公開にする'
+
+      expect(page.accept_confirm).to eq '非公開にしますか？'
+      expect(page).to have_content '非公開にしました'
+      expect(Product.last.published_at).to be_nil
+    end
   end
 end
