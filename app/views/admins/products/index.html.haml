@@ -12,10 +12,9 @@
               .flex-grow-1
                 .d-flex.justify-content-between.align-items-start
                   .me-2
-                    %h5.card-title= link_to product.name, '#' # TODO: 詳細画面作成時にリンクを追加
+                    %h5.card-title= link_to product.name, admins_product_path(product)
                     %p.card-text
                       価格: #{number_to_currency(product.price)}
                   = link_to '編集', edit_admins_product_path(product.id), class: 'btn btn-outline-primary btn-sm'
-
   .d-flex.justify-content-center
     = paginate @products, theme: 'bootstrap-5'

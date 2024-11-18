@@ -1,0 +1,22 @@
+%h2.text-center.mb-4 商品詳細(管理画面)
+
+.container
+  .row.justify-content-center
+    .col-lg-10
+      .card.shadow-sm.mb-4
+        .card-header.bg-primary.text-white
+          %h2.h4.mb-0= @product.name
+        .card-body
+          .row
+            .col-md-6.mb-4
+              = render 'shared/product_image', product: @product, size: '660x438', variant: :large, class: 'img-fluid rounded'
+            .col-md-6.ms-4
+              .mb-4
+                %h3.h5.text-muted.text-start 価格
+                %p.h3.text-primary.text-start= number_to_currency(@product.price)
+              .mb-4
+                %h3.h5.text-muted.text-start 商品説明
+                %p.card-text.text-start= @product.description
+        .card-footer
+          .d-flex.justify-content-between
+            = button_to '公開する', '#', class: 'btn btn-outline-primary' # TODO: 公開設定の処理を実装したらリンク修正
