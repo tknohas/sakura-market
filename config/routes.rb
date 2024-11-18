@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root 'products#index'
 
     resources :products, only: %i[index show new create edit update destroy] do
-      resource :publish, only: %i[new create edit update], module: :products
+      resource :publish, only: %i[update], module: :products
     end
   end
 end
