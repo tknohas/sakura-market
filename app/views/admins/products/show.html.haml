@@ -19,4 +19,8 @@
                 %p.card-text.text-start= @product.description
         .card-footer
           .d-flex.justify-content-between
-            = button_to '公開する', '#', class: 'btn btn-outline-primary' # TODO: 公開設定の処理を実装したらリンク修正
+            - if @product.published_at.present?
+              -# TODO: 非公開のリンクは次PRで実装
+              = button_to '非公開にする', '#', method: :delete, data: { turbo_confirm: '非公開にしますか？' }, class: 'btn btn-outline-danger' # TODO: 公開設定の処理を実装したらリンク修正
+            - else
+              = button_to '公開する', admins_product_publish_path(@product), method: :patch, data: { turbo_confirm: '公開しますか？' }, class: 'btn btn-outline-primary' # TODO: 公開設定の処理を実装したらリンク修正
