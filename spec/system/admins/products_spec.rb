@@ -11,7 +11,7 @@ RSpec.describe 'Products', type: :system do
       it '登録成功' do
         visit new_admins_product_path
 
-        fill_in 'product_name', with: 'にんじん'
+        fill_in 'product_name', with: '豆腐'
         fill_in 'product_price', with: 1_000
         fill_in 'product_description', with: '甘いです。'
         attach_file 'product_image', file_fixture('test_image.jpg')
@@ -19,6 +19,11 @@ RSpec.describe 'Products', type: :system do
         click_button '登録する'
 
         expect(page).to have_content '登録しました'
+        expect(page).to have_css 'h2', text: '商品一覧(管理画面)'
+        expect(page).to have_content '豆腐'
+        expect(page).to have_css 'img.attached-product-image'
+        expect(Product.last.position).to eq 1
+        expect(page).to have_content '1,000円'
       end
     end
 
@@ -46,10 +51,15 @@ RSpec.describe 'Products', type: :system do
         fill_in 'product_price', with: 2_000
         fill_in 'product_description', with: '苦いです。'
         attach_file 'product_image', file_fixture('test_image.jpg')
-        fill_in 'product_position', with: 1
+        fill_in 'product_position', with: 2
         click_button '変更する'
 
         expect(page).to have_content '変更しました'
+        expect(page).to have_css 'h2', text: '商品一覧(管理画面)'
+        expect(page).to have_css 'img.attached-product-image'
+        expect(page).to have_content 'ピーマン'
+        expect(page).to have_content '2,000円'
+        expect(Product.last.position).to eq 2
       end
     end
 
