@@ -17,6 +17,7 @@ gem 'stimulus-rails'
 gem 'thruster', require: false
 gem 'turbo-rails'
 
+gem 'acts_as_list'
 gem 'devise'
 gem 'haml-rails'
 gem 'image_processing'
