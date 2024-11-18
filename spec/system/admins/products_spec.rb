@@ -1,5 +1,6 @@
 RSpec.describe 'Products', type: :system do
   let!(:admin) { create(:admin) }
+  let!(:product) { create(:product, name: 'にんじん', price: 1_000, description: '商品説明です。', position: 1) }
 
   before do
     admin_login(admin)
@@ -37,8 +38,6 @@ RSpec.describe 'Products', type: :system do
   end
 
   describe '商品編集' do
-    let!(:product) { create(:product, name: 'にんじん', price: 1_000, description: '商品説明です。', position: 1) }
-
     context 'フォームの入力値が正常' do
       it '編集成功' do
         visit edit_admins_product_path(product)
@@ -80,8 +79,6 @@ RSpec.describe 'Products', type: :system do
   end
 
   describe '商品一覧' do
-    let!(:product) { create(:product, name: 'にんじん', price: 1_000, description: '商品説明です。', position: 1) }
-
     it '商品情報が表示される' do
       visit admins_root_path
 
@@ -102,6 +99,31 @@ RSpec.describe 'Products', type: :system do
       click_on '商品登録画面'
 
       expect(page).to have_css 'h2', text: '商品登録'
+    end
+  end
+
+  describe '商品の表示順' do
+    let!(:product1) { create(:product, name: 'ピーマン', price: 2_000, position: 2) }
+    let!(:product2) { create(:product, name: '玉ねぎ', price: 3_000, position: 3) }
+
+    it '表示順を設定できる' do
+      visit edit_admins_product_path(product1)
+
+      fill_in 'product_position', with: 1
+      click_on '変更する'
+
+      expect(page).to have_css 'h2', text: '商品一覧(管理画面)'
+      sorted_products = all('.card-body .card-title').map(&:text)
+      expect(sorted_products).to eq %w(ピーマン にんじん 玉ねぎ)
+
+      visit edit_admins_product_path(product2)
+
+      fill_in 'product_position', with: 1
+      click_on '変更する'
+
+      expect(page).to have_css 'h2', text: '商品一覧(管理画面)'
+      sorted_products = all('.card-body .card-title').map(&:text)
+      expect(sorted_products).to eq %w(玉ねぎ ピーマン にんじん)
     end
   end
 end
