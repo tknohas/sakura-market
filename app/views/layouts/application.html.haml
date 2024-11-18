@@ -23,4 +23,17 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
 
   %body
+    - if notice
+      .alert.alert-success.mb-0
+        = notice
+    - if alert
+      .alert.alert-danger.mb-0
+        = alert
+    %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.mb-3
+      %h2.text-white.ms-2
+        = link_to 'さくらマーケット', root_path, class: 'text-decoration-none text-white'
+      .ms-auto.me-2
+        .d-inline-block
+          - if current_user
+            = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
     = yield
