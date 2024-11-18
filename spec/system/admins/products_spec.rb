@@ -99,7 +99,7 @@ RSpec.describe 'Products', type: :system do
     end
 
     it '商品編集画面へ遷移する' do
-      visit admins_root_path
+
       click_on '編集'
 
       expect(page).to have_css 'h2', text: '商品編集'
@@ -109,6 +109,13 @@ RSpec.describe 'Products', type: :system do
       click_on '商品登録画面'
 
       expect(page).to have_css 'h2', text: '商品登録'
+    end
+
+    it '商品詳細画面へ遷移する' do
+      visit admins_root_path
+      click_on 'にんじん'
+
+      expect(page).to have_css 'h2', text: '商品詳細(管理画面)'
     end
   end
 
@@ -174,7 +181,7 @@ RSpec.describe 'Products', type: :system do
     it '商品情報が表示される' do
       click_on 'にんじん'
 
-      expect(page).to have_css 'h1', text: '商品詳細(管理画面)'
+      expect(page).to have_css 'h2', text: '商品詳細(管理画面)'
       expect(page).to have_content 'にんじん'
       expect(page).to have_content '1,000円'
       expect(page).to have_content '商品説明です。'
