@@ -18,9 +18,11 @@ gem 'thruster', require: false
 gem 'turbo-rails'
 
 gem 'acts_as_list'
+gem 'bootstrap5-kaminari-views'
 gem 'devise'
 gem 'haml-rails'
 gem 'image_processing'
+gem 'kaminari'
 gem 'simple_form'
 
 group :development, :test do

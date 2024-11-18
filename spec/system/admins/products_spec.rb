@@ -136,4 +136,37 @@ RSpec.describe 'Products', type: :system do
       expect(sorted_products).to eq %w[玉ねぎ ピーマン にんじん]
     end
   end
+
+  describe 'ページネーション', type: :system do
+    before do
+      create_list(:product, 30)
+    end
+
+    it 'ページにつき２４件の商品が表示される' do
+      visit admins_products_path
+
+      expect(page).to have_selector('.card-title', count: 24)
+    end
+
+    it 'ページネーションのリンクが表示される' do
+      visit admins_products_path
+
+      within '.pagination' do
+        expect(page).to have_link('次へ', href: '/admins?page=2')
+        expect(page).not_to have_link('前へ')
+      end
+    end
+
+    it '次のページが表示される' do
+      visit admins_products_path
+      click_on '次へ'
+
+      expect(page).to have_selector('.card-title', count: 7)
+
+      within '.pagination' do
+        expect(page).to have_link('前へ', href: '/admins')
+        expect(page).not_to have_link('次へ', href: '/admins?page=3')
+      end
+    end
+  end
 end
