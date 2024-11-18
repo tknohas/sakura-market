@@ -17,11 +17,11 @@ gem 'stimulus-rails'
 gem 'thruster', require: false
 gem 'turbo-rails'
 
+gem 'acts_as_list'
 gem 'devise'
 gem 'haml-rails'
 gem 'image_processing'
 gem 'simple_form'
-gem 'acts_as_list'
 
 group :development, :test do
   gem 'brakeman', require: false

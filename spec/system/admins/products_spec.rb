@@ -114,7 +114,7 @@ RSpec.describe 'Products', type: :system do
 
       expect(page).to have_css 'h2', text: '商品一覧(管理画面)'
       sorted_products = all('.card-body .card-title').map(&:text)
-      expect(sorted_products).to eq %w(ピーマン にんじん 玉ねぎ)
+      expect(sorted_products).to eq %w[ピーマン にんじん 玉ねぎ]
 
       visit edit_admins_product_path(product2)
 
@@ -123,7 +123,7 @@ RSpec.describe 'Products', type: :system do
 
       expect(page).to have_css 'h2', text: '商品一覧(管理画面)'
       sorted_products = all('.card-body .card-title').map(&:text)
-      expect(sorted_products).to eq %w(玉ねぎ ピーマン にんじん)
+      expect(sorted_products).to eq %w[玉ねぎ ピーマン にんじん]
     end
   end
 end
