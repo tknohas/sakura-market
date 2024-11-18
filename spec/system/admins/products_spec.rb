@@ -169,4 +169,16 @@ RSpec.describe 'Products', type: :system do
       end
     end
   end
+
+  describe '詳細画面' do
+    it '商品情報が表示される' do
+      click_on 'にんじん'
+
+      expect(page).to have_css 'h1', text: '商品詳細(管理画面)'
+      expect(page).to have_content 'にんじん'
+      expect(page).to have_content '1,000円'
+      expect(page).to have_content '商品説明です。'
+      expect(page).to have_button '公開する'
+    end
+  end
 end
