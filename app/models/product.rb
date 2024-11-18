@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   acts_as_list
+  paginates_per 24
 
   has_one_attached :image do |attachable|
     attachable.variant :small, resize_to_limit: [120, 80], preprocessed: true

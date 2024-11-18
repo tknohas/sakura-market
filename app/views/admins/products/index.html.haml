@@ -16,3 +16,6 @@
                     %p.card-text
                       価格: #{number_to_currency(product.price)}
                   = link_to '編集', edit_admins_product_path(product.id), class: 'btn btn-outline-primary btn-sm'
+
+  .d-flex.justify-content-center
+    = paginate @products, theme: 'bootstrap-5'

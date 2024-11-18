@@ -22,6 +22,8 @@ gem 'devise'
 gem 'haml-rails'
 gem 'image_processing'
 gem 'simple_form'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   gem 'brakeman', require: false
