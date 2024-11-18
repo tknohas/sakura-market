@@ -99,7 +99,6 @@ RSpec.describe 'Products', type: :system do
     end
 
     it '商品編集画面へ遷移する' do
-
       click_on '編集'
 
       expect(page).to have_css 'h2', text: '商品編集'
