@@ -186,5 +186,14 @@ RSpec.describe 'Products', type: :system do
       expect(page).to have_content '商品説明です。'
       expect(page).to have_button '公開する'
     end
+
+    it '公開設定できる', :js do
+      click_on 'にんじん'
+      click_on '公開する'
+
+      expect(page.accept_confirm).to eq '公開しますか？'
+      expect(page).to have_content '公開しました'
+      expect(Product.last.published_at).to be_present
+    end
   end
 end
