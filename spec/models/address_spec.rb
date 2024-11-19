@@ -6,7 +6,7 @@ RSpec.describe Address, type: :model do
     it 'バリデーションが有効' do
       expect(address).to be_valid
     end
- 
+
     describe '郵便番号' do
       it 'バリデーションエラー(入力なし)' do
         address.zip_code = nil
