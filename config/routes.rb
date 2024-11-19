@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "addresses/new"
   root 'products#index'
 
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
