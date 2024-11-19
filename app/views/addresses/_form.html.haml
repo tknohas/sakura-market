@@ -1,19 +1,12 @@
-= simple_form_for @address, url: address_path, html: { class: 'container mt-5' } do |f|
-  = render 'admins/shared/error_messages', resource: address
-  .form-group.mt-2
-    = f.label :zip_code, class: "form-label"
-    = f.text_field :zip_code, autofocus: true, autocomplete: "zip_code", class: "form-control"
-  .form-group.mt-2
-    = f.label :prefecture, class: "form-label"
-    = f.text_field :prefecture, autofocus: true, autocomplete: "prefecture", class: "form-control"
-  .form-group.mt-2
-    = f.label :city, class: "form-label"
-    = f.text_field :city, autofocus: true, autocomplete: "city", class: "form-control"
-  .form-group.mt-2
-    = f.label :street, class: "form-label"
-    = f.text_field :street, autofocus: true, autocomplete: "street", class: "form-control"
-  .form-group.mt-2
-    = f.label :building, class: "form-label"
-    = f.text_field :building, autofocus: true, autocomplete: "building", class: "form-control"
-  .form-group.mt-2.text-center
-    = f.submit text, class: "btn btn-primary mt-2"
+.container
+  .card
+    .card-body
+      = simple_form_for @address, url: address_path do |f|
+        = render 'admins/shared/error_messages', resource: address
+        = f.input :zip_code
+        = f.input :prefecture
+        = f.input :city
+        = f.input :street
+        = f.input :building
+        .text-center
+          = f.submit text, class: "btn btn-primary mt-2"
