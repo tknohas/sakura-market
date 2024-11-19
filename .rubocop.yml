@@ -16,5 +16,5 @@ Style/StringLiterals:
     - single_quotes
     - double_quotes
 
-Style/SingleLineMethods:
-  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
