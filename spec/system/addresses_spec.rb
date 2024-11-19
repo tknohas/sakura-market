@@ -53,7 +53,7 @@ RSpec.describe 'Addresses', type: :system do
         fill_in 'address_building', with: '田園調布駅'
         click_button '変更する'
 
-        expect(page).to have_content '登録しました'
+        expect(page).to have_content '変更しました'
         expect(page).to have_css 'h2', text: '住所編集'
       end
     end

@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      ridirect_to edit_address_path, notice: '変更しました'
+      redirect_to edit_address_path, notice: '変更しました'
     else
       render :edit, status: :unprocessable_entity
     end
