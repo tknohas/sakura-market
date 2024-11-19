@@ -14,4 +14,5 @@ class Product < ApplicationRecord
   validates :position, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :order_by_position, -> { order(:position) }
+  scope :published, -> { where.not(published_at: nil) }
 end
