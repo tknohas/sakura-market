@@ -14,4 +14,16 @@ RSpec.describe 'Products', type: :system do
       expect(page).to_not have_content '2,000円'
     end
   end
+
+  describe '商品詳細' do
+    it '商品情報が表示される' do
+      visit product_path(published_product)
+
+      expect(page).to have_css 'h2', text: '商品詳細'
+      expect(page).to have_content 'にんじん'
+      expect(page).to have_content '1,000円'
+      expect(page).to have_css 'img.product-image'
+      expect(page).to have_content 'カートに追加'
+    end
+  end
 end
