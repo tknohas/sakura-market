@@ -4,4 +4,8 @@ class ProductsController < ApplicationController
   def index
     @products = Product.published.page(params[:page])
   end
+
+  def show
+    @product = Product.published.find(params[:id])
+  end
 end
