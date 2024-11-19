@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
   resources :products, only: %i[index show]
-  resource :address, only: %i[new create]
+  resource :address, only: %i[new create edit update]
 end

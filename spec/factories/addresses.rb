@@ -4,6 +4,6 @@ FactoryBot.define do
     prefecture { '東京都' }
     city { '千代田区' }
     street { '丸の内1丁目' }
-    building { nil }
+    building { '東京駅' }
   end
 end
