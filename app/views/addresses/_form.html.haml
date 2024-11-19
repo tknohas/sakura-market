@@ -1,0 +1,12 @@
+.container
+  .card
+    .card-body
+      = simple_form_for @address, url: address_path do |f|
+        = render 'admins/shared/error_messages', resource: address
+        = f.input :zip_code
+        = f.input :prefecture
+        = f.input :city
+        = f.input :street
+        = f.input :building
+        .text-center
+          = f.submit text, class: "btn btn-primary mt-2"
