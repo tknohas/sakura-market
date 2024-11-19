@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "addresses/new"
   root 'products#index'
 
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
   resources :products, only: %i[index show]
+  resource :address, only: %i[new create]
 end
