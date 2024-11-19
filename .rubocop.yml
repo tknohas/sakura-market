@@ -1,9 +1,20 @@
 inherit_gem:
   sgcop: ruby/rubocop.yml
 
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+
 Style/StringLiterals:
   Enabled: false
   EnforcedStyle: single_quotes
   SupportedStyles:
     - single_quotes
     - double_quotes
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
