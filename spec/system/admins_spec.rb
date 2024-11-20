@@ -10,9 +10,7 @@ RSpec.describe 'Admins', type: :system do
       it 'ログイン成功' do
         fill_in 'admin_email', with: admin.email
         fill_in 'admin_password', with: admin.password
-        within '.actions' do
-          click_button 'ログイン'
-        end
+        click_button 'ログイン'
 
         expect(page).to have_content 'ログインしました'
       end
@@ -22,9 +20,7 @@ RSpec.describe 'Admins', type: :system do
       it 'ログイン失敗' do
         fill_in 'admin_email', with: ''
         fill_in 'admin_password', with: ''
-        within '.actions' do
-          click_button 'ログイン'
-        end
+        click_button 'ログイン'
 
         expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
       end
