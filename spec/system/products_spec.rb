@@ -23,7 +23,7 @@ RSpec.describe 'Products', type: :system do
       expect(page).to have_content 'にんじん'
       expect(page).to have_content '1,000円'
       expect(page).to have_css 'img.product-image'
-      expect(page).to have_content 'カートに追加'
+      expect(page).to have_button '登録する'
     end
   end
 end

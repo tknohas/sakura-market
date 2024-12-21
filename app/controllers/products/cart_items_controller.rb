@@ -1,5 +1,6 @@
 class Products::CartItemsController < ApplicationController
   before_action :set_cart_item, only: %i[update destroy]
+  skip_before_action :authenticate_user!
 
   def create
     product = Product.published.find(params[:product_id])
