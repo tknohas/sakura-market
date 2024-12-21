@@ -34,8 +34,10 @@
         = link_to 'さくらマーケット', root_path, class: 'text-decoration-none text-white'
       .ms-auto.me-2
         .d-inline-block
-          - if current_user
-            .d-flex
-              = link_to 'カート', cart_path, class: 'text-decoration-none text-white me-3'
+          .d-flex
+            = link_to 'カート', cart_path, class: 'text-decoration-none text-white me-3'
+            - if current_user
               = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
+            - else
+              = button_to 'ログイン画面', new_user_session_path, method: :get, class: 'btn btn-outline-success'
     = yield
