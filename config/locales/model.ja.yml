@@ -3,6 +3,7 @@ ja:
     models:
       product: 商品
       address: 住所
+      cart_item: カート商品
     attributes:
       product:
         name: 商品名
@@ -16,6 +17,8 @@ ja:
         city: 市区町村
         street: それ以降の住所
         building: 建物名
+      cart_item:
+        quantity: 商品数
     errors:
       models:
         product:

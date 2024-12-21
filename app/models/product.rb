@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
+
   acts_as_list
   paginates_per 24
 
