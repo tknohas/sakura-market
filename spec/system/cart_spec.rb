@@ -92,5 +92,29 @@ RSpec.describe 'Carts', type: :system do
         expect(page).to have_content '削除しました'
       end.to change(CartItem, :count).by(-1)
     end
+
+    it 'セッションカートの情報が引き継がれる' do
+      user = create(:user)
+      create(:cart, user:)
+
+      user_login(user)
+      visit product_path(product)
+      fill_in 'cart_item_quantity', with: 1
+      click_on '登録する'
+
+      expect(CartItem.last.quantity).to eq 1
+      click_on 'ログアウト'
+
+      visit product_path(product)
+      fill_in 'cart_item_quantity', with: 1
+      click_on '登録する'
+
+      expect(CartItem.last.quantity).to eq 1
+      user_login(user)
+      click_on 'カート'
+
+      expect(page).to have_content 2
+      expect(user.cart.cart_items.last.quantity).to eq 2
+    end
   end
 end
