@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions',
   }
-  resources :products, only: %i[index show]
+  resources :products, only: %i[index show] do
+    resources :cart_items, only: %i[create update destroy], module: :products
+  end
   resource :address, only: %i[new create edit update]
+  resource :cart, only: %i[show]
 end

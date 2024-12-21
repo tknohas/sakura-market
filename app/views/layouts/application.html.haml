@@ -35,5 +35,7 @@
       .ms-auto.me-2
         .d-inline-block
           - if current_user
-            = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
+            .d-flex
+              = link_to 'カート', cart_path, class: 'text-decoration-none text-white me-3'
+              = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger'
     = yield

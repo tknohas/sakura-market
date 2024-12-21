@@ -17,4 +17,9 @@
               .mb-4
                 %h3.h5.text-muted.text-start 商品説明
                 %p.card-text.text-start= @product.description
-                = link_to 'カートに追加', '#', class: 'btn btn-primary'
+                - if current_cart.cart_items.exists?(product: @product)
+                  %button.btn.btn-primary.disabled 追加済み
+                - else
+                  = simple_form_for CartItem.new, url: product_cart_items_path(@product.id) do |f|
+                    = f.input :quantity
+                    = f.button :submit, class: 'btn btn-primary'
