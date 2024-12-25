@@ -51,4 +51,22 @@ class Cart < ApplicationRecord
   def tax_price
     total_price - total_exclude_tax
   end
+
+  def clear
+    cart_items.destroy_all
+  end
+
+  DELIVERY_TIME_OPTIONS = %w[
+    指定なし
+    8:00~12:00
+    12:00~14:00
+    14:00~16:00
+    16:00~18:00
+    18:00~20:00
+    20:00~21:00
+  ].map { |time| [time, time] }.freeze
+
+  def delivery_time_options
+    DELIVERY_TIME_OPTIONS
+  end
 end

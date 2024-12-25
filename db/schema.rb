@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_20_125831) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_22_043311) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -91,6 +91,34 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_125831) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchase_items", force: :cascade do |t|
+    t.integer "purchase_id", null: false
+    t.integer "product_id", null: false
+    t.integer "quantity", default: 0, null: false
+    t.integer "price", default: 0, null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purchase_items_on_product_id"
+    t.index ["purchase_id", "product_id"], name: "index_purchase_items_on_purchase_id_and_product_id", unique: true
+    t.index ["purchase_id"], name: "index_purchase_items_on_purchase_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "subtotal", null: false
+    t.integer "shipping_fee", null: false
+    t.integer "delivery_fee", null: false
+    t.integer "tax", null: false
+    t.float "tax_rate", null: false
+    t.integer "total_price", null: false
+    t.date "delivery_on"
+    t.string "delivery_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -110,4 +138,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_125831) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "purchase_items", "products"
+  add_foreign_key "purchase_items", "purchases"
+  add_foreign_key "purchases", "users"
 end

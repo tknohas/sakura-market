@@ -24,6 +24,7 @@ gem 'haml-rails'
 gem 'image_processing'
 gem 'kaminari'
 gem 'simple_form'
+gem 'business_time'
 
 group :development, :test do
   gem 'brakeman', require: false
