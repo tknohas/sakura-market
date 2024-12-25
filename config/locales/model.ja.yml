@@ -4,6 +4,7 @@ ja:
       product: 商品
       address: 住所
       cart_item: カート商品
+      purchase: 購入
     attributes:
       product:
         name: 商品名
@@ -19,6 +20,9 @@ ja:
         building: 建物名
       cart_item:
         quantity: 商品数
+      purchase:
+        delivery_on: 配達日
+        delivery_time: 配達時間
     errors:
       models:
         product:

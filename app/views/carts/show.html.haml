@@ -34,5 +34,7 @@
           .col-6.text-end #{number_to_currency(current_cart.tax_price)}
           .col-6.text-start.fw-bold 合計金額:
           .col-6.text-end.fw-bold #{number_to_currency(current_cart.total_price)}
+    .text-center.mt-4
+      = link_to '購入確認', new_purchase_path, class: 'btn btn-md btn-primary'
   - else
     %p.text-center 商品は追加されていません。

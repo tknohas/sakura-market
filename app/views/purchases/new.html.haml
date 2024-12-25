@@ -1,0 +1,57 @@
+%h2.text-center.mb-4 購入確認
+
+.container.mt-4
+  .card
+    .card-body
+      %main
+        .row.g-5
+          .col-md-5.col-lg-4.order-md-last
+            %h4.d-flex.justify-content-between.align-items-center.mb-3
+              %span.text-primary カート
+              %span.badge.bg-primary.rounded-pill= current_cart.cart_items.size
+            %ul.list-group.mb-3
+              - current_cart.cart_items.each do |cart_item|
+                %li.list-group-item.d-flex.justify-content-between.lh-sm
+                  %div
+                    %h6.my-0 #{cart_item.product.name}(#{number_to_currency(cart_item.product.price)}) x #{cart_item.quantity}
+                  %span.text-body-secondary= number_to_currency(cart_item.total_price)
+            .card
+              .card-body
+                .row
+                  .col-6.text-start 小計:
+                  .col-6.text-end #{number_to_currency(current_cart.subtotal)}
+                  .col-6.text-start 代引き手数料:
+                  .col-6.text-end #{number_to_currency(current_cart.cash_on_delivery_fee)}
+                  .col-6.text-start 送料:
+                  .col-6.text-end #{number_to_currency(current_cart.calculate_shipping_fee)}
+                  .col-6.text-start 消費税:
+                  .col-6.text-end #{number_to_currency(current_cart.tax_price)}
+                  .col-6.text-start.fw-bold 合計金額:
+                  .col-6.text-end.fw-bold #{number_to_currency(current_cart.total_price)}
+          .col-md-7.col-lg-8
+            %h4.mb-3 配送先住所
+            .row.g-3
+              .col-sm-6
+                - if current_user.address.present?
+                  %p 〒#{current_user.address.zip_code}
+                  %p
+                    = current_user.address.prefecture
+                    = current_user.address.city
+                    = current_user.address.street
+                  %p= current_user.address.building
+                - else
+                  = link_to 'こちらから住所を登録してください', new_address_path, class: 'text-decoration-none'
+            .row.g-3
+              .col-sm-6
+                #{current_cart.user.name}さま
+            %hr.my-4
+            %h4.mb-3 お支払い方法
+            .my-3
+              %p 銀行振込
+            %hr.my-4
+              = simple_form_for Purchase.new, url: purchases_path do |f|
+                - minimum_delivery_days = 3
+                - maximum_delivery_days = 14
+                = f.input :delivery_on, as: :date, html5: true, input_html: { min: minimum_delivery_days.business_days.after(Date.current), max: maximum_delivery_days.business_days.after(Date.current) }
+                = f.input :delivery_time, prompt: "Select your age", selected: '指定なし', collection: current_cart.delivery_time_options
+                = f.submit '購入する', class: 'btn btn-success w-100'
