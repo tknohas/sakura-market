@@ -6,11 +6,11 @@ class Purchase < ApplicationRecord
   MINIMUM_DELIVERY_DAYS = 3
   MAXIMUM_DELIVERY_DAYS = 14
 
-  before_create :set_calculated_attributes
+  before_create :set_financial_attributes
 
   validate :delivery_date_should_be_within_valid_range
 
-  def set_calculated_attributes
+  def set_financial_attributes
     assign_attributes(
       subtotal: user.cart.subtotal,
       shipping_fee: user.cart.calculate_shipping_fee,
